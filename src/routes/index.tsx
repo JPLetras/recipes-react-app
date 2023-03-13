@@ -5,27 +5,32 @@ import Home from "../pages/Home";
 import Intro from "../pages/Intro";
 import Search from "../pages/Search";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "/intro",
+          element: <Intro />,
+        },
+        {
+          path: "/search",
+          element: <Search />,
+        },
+        {
+          path: "*",
+          element: <ErrorPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/intro",
-        element: <Intro />,
-      },
-      {
-        path: "/search",
-        element: <Search />,
-      },
-      {
-        path: "*",
-        element: <ErrorPage />,
-      },
-    ],
-  },
-]);
+    basename: "/recipes-react-app",
+  }
+);
